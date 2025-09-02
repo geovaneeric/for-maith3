@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Para Maithê ❤️</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;500;700&display=swap');
+
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: linear-gradient(135deg, #ffdde1, #ee9ca7);
+      overflow: hidden;
+      padding: 20px;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.95);
+      padding: 30px;
+      border-radius: 25px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+      text-align: center;
+      max-width: 420px;
+      animation: aparecer 1.5s ease-in-out;
+    }
+
+    h1 {
+      font-family: 'Great Vibes', cursive;
+      font-size: 2.5em;
+      color: #e63946;
+      margin-bottom: 15px;
+    }
+
+    h2 {
+      font-size: 1.3em;
+      font-weight: 500;
+      color: #444;
+      margin-bottom: 20px;
+    }
+
+    p {
+      font-size: 1.1em;
+      color: #333;
+      line-height: 1.5em;
+    }
+
+    button {
+      margin-top: 25px;
+      padding: 12px 28px;
+      border: none;
+      border-radius: 20px;
+      background: linear-gradient(45deg, #ff758c, #ff7eb3);
+      color: white;
+      font-size: 1em;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+      box-shadow: 0 5px 12px rgba(0,0,0,0.2);
+    }
+
+    button:hover {
+      transform: scale(1.08);
+      background: linear-gradient(45deg, #ff5e7e, #ff4d88);
+    }
+
+    @keyframes aparecer {
+      from {opacity: 0; transform: translateY(30px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+
+    .heart {
+      position: absolute;
+      font-size: 24px;
+      color: #ff4d6d;
+      animation: float 6s linear forwards;
+      pointer-events: none;
+    }
+
+    .photo {
+      position: absolute;
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      object-fit: cover;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      animation: float 8s linear forwards;
+      pointer-events: none;
+    }
+
+    @keyframes float {
+      0% {transform: translateY(0) scale(1); opacity: 1;}
+      50% {transform: translateY(-200px) scale(1.2); opacity: 0.9;}
+      100% {transform: translateY(-450px) scale(0.8); opacity: 0;}
+    }
+
+    #assinatura {
+      font-family: 'Great Vibes', cursive;
+      font-size: 2em;
+      color: #e63946;
+      margin-top: 25px;
+      display: none;
+      animation: fadeIn 2s ease-in-out forwards;
+    }
+
+    @keyframes fadeIn {
+      from {opacity: 0;}
+      to {opacity: 1;}
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>Para Maithê ❤️</h1>
+    <h2>Um cantinho só pra você</h2>
+    <p>
+      Maithê, você é a razão de muitos dos meus sorrisos.<br>
+      E eu só queria te lembrar o quanto você é especial pra mim 💖
+    </p>
+    <button onclick="mostrarMensagem()">Clique aqui 💌</button>
+    <p id="mensagem"></p>
+    <div id="assinatura">Com amor, Eric 💌</div>
+  </div>
+
+  <audio id="musica" src="oceano.mp3"></audio>
+
+  <script>
+    function mostrarMensagem() {
+      const msg = document.getElementById('mensagem');
+      const assinatura = document.getElementById('assinatura');
+      const musica = document.getElementById('musica');
+
+      msg.innerHTML = "Eu te amo, Maithê! 🌹 Obrigado por iluminar minha vida ✨";
+      assinatura.style.display = "block";
+
+      // tocar música
+      musica.play();
+
+      // soltar corações
+      for(let i = 0; i < 12; i++) {
+        let heart = document.createElement("div");
+        heart.innerHTML = "💖";
+        heart.classList.add("heart");
+        heart.style.left = Math.random() * window.innerWidth + "px";
+        heart.style.top = window.innerHeight + "px";
+        document.body.appendChild(heart);
+
+        setTimeout(() => {
+          heart.remove();
+        }, 6000);
+      }
+
+      // soltar fotos (adicione suas imagens no array abaixo)
+      const fotos = ["maithe1.png", "maithe2.png", "maithe3.png"]; 
+      for(let i = 0; i < fotos.length; i++) {
+        let img = document.createElement("img");
+        img.src = fotos[i];
+        img.classList.add("photo");
+        img.style.left = Math.random() * window.innerWidth + "px";
+        img.style.top = window.innerHeight + "px";
+        document.body.appendChild(img);
+
+        setTimeout(() => {
+          img.remove();
+        }, 8000);
+      }
+    }
+  </script>
+</body>
+</html>
